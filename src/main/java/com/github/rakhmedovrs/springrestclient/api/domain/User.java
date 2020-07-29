@@ -7,46 +7,45 @@ import java.util.Map;
 
 public class User implements Serializable
 {
-	private String gender;
-	private Name name;
-	private Location location;
+	private Integer id;
+	private String name;
+	private String username;
 	private String email;
-	private Login login;
+	private Address address;
 	private String phone;
-	private Job job;
-	private Billing billing;
-	private String language;
-	private String currency;
-	private Map<String, Object> additionalProperties = new HashMap<>();
+	private String website;
+	private Company company;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private final static long serialVersionUID = 7912395993430332447L;
 
-	public String getGender()
+	public Integer getId()
 	{
-		return gender;
+		return id;
 	}
 
-	public void setGender(String gender)
+	public void setId(Integer id)
 	{
-		this.gender = gender;
+		this.id = id;
 	}
 
-	public Name getName()
+	public String getName()
 	{
 		return name;
 	}
 
-	public void setName(Name name)
+	public void setName(String name)
 	{
 		this.name = name;
 	}
 
-	public Location getLocation()
+	public String getUsername()
 	{
-		return location;
+		return username;
 	}
 
-	public void setLocation(Location location)
+	public void setUsername(String username)
 	{
-		this.location = location;
+		this.username = username;
 	}
 
 	public String getEmail()
@@ -59,14 +58,14 @@ public class User implements Serializable
 		this.email = email;
 	}
 
-	public Login getLogin()
+	public Address getAddress()
 	{
-		return login;
+		return address;
 	}
 
-	public void setLogin(Login login)
+	public void setAddress(Address address)
 	{
-		this.login = login;
+		this.address = address;
 	}
 
 	public String getPhone()
@@ -79,44 +78,24 @@ public class User implements Serializable
 		this.phone = phone;
 	}
 
-	public Job getJob()
+	public String getWebsite()
 	{
-		return job;
+		return website;
 	}
 
-	public void setJob(Job job)
+	public void setWebsite(String website)
 	{
-		this.job = job;
+		this.website = website;
 	}
 
-	public Billing getBilling()
+	public Company getCompany()
 	{
-		return billing;
+		return company;
 	}
 
-	public void setBilling(Billing billing)
+	public void setCompany(Company company)
 	{
-		this.billing = billing;
-	}
-
-	public String getLanguage()
-	{
-		return language;
-	}
-
-	public void setLanguage(String language)
-	{
-		this.language = language;
-	}
-
-	public String getCurrency()
-	{
-		return currency;
-	}
-
-	public void setCurrency(String currency)
-	{
-		this.currency = currency;
+		this.company = company;
 	}
 
 	public Map<String, Object> getAdditionalProperties()

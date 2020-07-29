@@ -5,13 +5,15 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location implements Serializable
+public class Address implements Serializable
 {
 	private String street;
+	private String suite;
 	private String city;
-	private String state;
-	private String postcode;
-	private Map<String, Object> additionalProperties = new HashMap<>();
+	private String zipcode;
+	private Geo geo;
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private final static long serialVersionUID = 6067407975721456325L;
 
 	public String getStreet()
 	{
@@ -21,6 +23,16 @@ public class Location implements Serializable
 	public void setStreet(String street)
 	{
 		this.street = street;
+	}
+
+	public String getSuite()
+	{
+		return suite;
+	}
+
+	public void setSuite(String suite)
+	{
+		this.suite = suite;
 	}
 
 	public String getCity()
@@ -33,24 +45,24 @@ public class Location implements Serializable
 		this.city = city;
 	}
 
-	public String getState()
+	public String getZipcode()
 	{
-		return state;
+		return zipcode;
 	}
 
-	public void setState(String state)
+	public void setZipcode(String zipcode)
 	{
-		this.state = state;
+		this.zipcode = zipcode;
 	}
 
-	public String getPostcode()
+	public Geo getGeo()
 	{
-		return postcode;
+		return geo;
 	}
 
-	public void setPostcode(String postcode)
+	public void setGeo(Geo geo)
 	{
-		this.postcode = postcode;
+		this.geo = geo;
 	}
 
 	public Map<String, Object> getAdditionalProperties()
