@@ -9,8 +9,7 @@ import java.util.List;
  * @author RakhmedovRS
  * @created 29-Jul-20
  */
-@Service
 public interface ApiService
 {
-	public List<User> getUsers(Integer limit);
+	List<User> getUsers(Integer limit);
 }

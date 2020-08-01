@@ -1,13 +1,12 @@
 package com.github.rakhmedovrs.springrestclient.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.rakhmedovrs.springrestclient.api.domain.User;
-import com.github.rakhmedovrs.springrestclient.api.domain.UserData;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 @Service
 public class ApiServiceImpl implements ApiService
 {
-	private RestTemplate restTemplate;
+	private final RestTemplate restTemplate;
 
 	public ApiServiceImpl(RestTemplate restTemplate)
 	{
@@ -36,7 +35,7 @@ public class ApiServiceImpl implements ApiService
 			User[] users = mapper.readValue(userDataObject, User[].class);
 			return Arrays.asList(users);
 		}
-		catch (JsonProcessingException ignore)
+		catch (IOException ignore)
 		{
 			return Collections.emptyList();
 		}
