@@ -1,10 +1,11 @@
 package com.github.rakhmedovrs.springrestclient.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.rakhmedovrs.springrestclient.api.domain.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,16 +20,22 @@ import java.util.List;
 public class ApiServiceImpl implements ApiService
 {
 	private final RestTemplate restTemplate;
+	private final String apiURL;
 
-	public ApiServiceImpl(RestTemplate restTemplate)
+	public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.url}") String apiURL)
 	{
 		this.restTemplate = restTemplate;
+		this.apiURL = apiURL;
 	}
 
 	@Override
 	public List<User> getUsers(Integer limit)
 	{
-		String userDataObject = restTemplate.getForObject(String.format("https://jsonplaceholder.typicode.com/users?limit=%d", limit), String.class);
+		UriComponentsBuilder builder = UriComponentsBuilder
+			.fromUriString(apiURL)
+			.queryParam("limit", limit);
+
+		String userDataObject = restTemplate.getForObject(builder.toUriString(), String.class);
 		try
 		{
 			ObjectMapper mapper = new ObjectMapper();
