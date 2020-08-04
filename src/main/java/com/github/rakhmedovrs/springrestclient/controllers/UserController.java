@@ -43,7 +43,10 @@ public class UserController
 			limit = 10;
 		}
 
-		model.addAttribute("users", apiService.getUsers(limit));
+		model.addAttribute("users", apiService
+			.getUsers(serverWebExchange
+			.getFormData()
+			.map(data -> Integer.parseInt(data.getFirst("limit")))));
 		return "userlist";
 	}
 }
